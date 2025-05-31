@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+         #
+#    By: guido <guido@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:29:59 by gmunoz            #+#    #+#              #
-#    Updated: 2024/12/13 15:57:23 by gmunoz           ###   ########.fr        #
+#    Updated: 2025/05/31 17:09:58 by guido            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 # Source files
-SRC = 
+SRC = src/philo.c src/philo_utils.c
 
 # Object files
 OBJS = $(SRC:.c=.o)
@@ -32,7 +32,7 @@ OBJS = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 # Link object files into the executable
 $(NAME): $(OBJS)
