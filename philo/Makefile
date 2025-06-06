@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: guido <guido@student.42.fr>                +#+  +:+       +#+         #
+#    By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:29:59 by gmunoz            #+#    #+#              #
-#    Updated: 2025/05/31 17:09:58 by guido            ###   ########.fr        #
+#    Updated: 2025/06/06 23:12:01 by gmunoz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 # Source files
-SRC = src/philo.c src/philo_utils.c
+SRC = src/philo.c src/philo_utils.c src/init.c
 
 # Object files
 OBJS = $(SRC:.c=.o)

@@ -3,16 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guido <guido@student.42.fr>                +#+  +:+       +#+        */
+/*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 12:26:30 by guido             #+#    #+#             */
-/*   Updated: 2025/05/31 17:27:11 by guido            ###   ########.fr       */
+/*   Updated: 2025/06/06 23:07:00 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-int	ph_atoi(const char *str, int argc)
+int	ph_strlen(char *str)
+{
+	int	i;
+
+	if (str == NULL)
+		return (0);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+int	ph_atoi(const char *str)
 {
 	int	i;
 	int	result;
@@ -32,10 +44,25 @@ int	ph_atoi(const char *str, int argc)
 	}
 	if (str[i] != '\0')
 		return (-1);
-	if (argc == 6 && result == 0)
-	{
-		printf("Error: Number of meals has to be higher than 0\n");
-		return (-1);
-	}
 	return (result);
+}
+
+void	destroy_mutex(char *str, t_data *data, pthread_mutex_t *forks)
+{
+	int	i;
+	
+	i = 0;
+	if (str)
+	{
+		write(2, str, ph_strlen(str));
+		write(2, "\n", 1);
+	}
+	pthread_mutex_destroy(&data->write_lock);
+	pthread_mutex_destroy(&data->write_lock);
+	pthread_mutex_destroy(&data->write_lock);
+	while (i < data->philos[0].num_of_philos)
+	{
+		pthread_mutex_destroy(&forks[i]);
+		i++;
+	}
 }
