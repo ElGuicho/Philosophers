@@ -6,7 +6,7 @@
 /*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 12:26:30 by guido             #+#    #+#             */
-/*   Updated: 2025/06/06 23:07:00 by gmunoz           ###   ########.fr       */
+/*   Updated: 2025/06/07 18:03:37 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,23 @@ void	destroy_mutex(char *str, t_data *data, pthread_mutex_t *forks)
 		pthread_mutex_destroy(&forks[i]);
 		i++;
 	}
+}
+
+int	ph_usleep(size_t milliseconds)
+{
+	size_t	start;
+
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}
+
+size_t	get_current_time(void)
+{
+	struct timeval	time;
+	
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

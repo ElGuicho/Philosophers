@@ -6,7 +6,7 @@
 /*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:09:05 by gmunoz            #+#    #+#             */
-/*   Updated: 2025/06/06 23:09:36 by gmunoz           ###   ########.fr       */
+/*   Updated: 2025/06/07 17:48:58 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int	main(int argc, char **argv)
 		return (write(2, "Invalid number of arguments.\n", 29), 1);
 	if (check_args(argv) == 1)
 		return (1);
-	init_program(&data, philos);
+	init_data(&data, philos);
+	init_forks(forks, ph_atoi(argv[1]));
+	init_phs(philos, &data, forks, argv);
+	thread_create(&data, forks);
 	destroy_mutex(NULL, &data, forks);
 	return (0);
 }

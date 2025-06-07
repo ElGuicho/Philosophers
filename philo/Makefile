@@ -6,7 +6,7 @@
 #    By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/01 15:29:59 by gmunoz            #+#    #+#              #
-#    Updated: 2025/06/06 23:12:01 by gmunoz           ###   ########.fr        #
+#    Updated: 2025/06/07 19:16:24 by gmunoz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 # Source files
-SRC = src/philo.c src/philo_utils.c src/init.c
+SRC = src/philo.c src/philo_utils.c src/init.c src/thread_init.c src/monitor.c \
+	src/cycle_actions.c
 
 # Object files
 OBJS = $(SRC:.c=.o)

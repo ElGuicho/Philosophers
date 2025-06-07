@@ -6,18 +6,18 @@
 /*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:04:37 by gmunoz            #+#    #+#             */
-/*   Updated: 2025/06/06 23:14:03 by gmunoz           ###   ########.fr       */
+/*   Updated: 2025/06/07 19:51:24 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
+# include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
-# include <pthread.h>
 # include <sys/time.h>
+# include <unistd.h>
 
 # define PHILO_MAX 300
 
@@ -51,9 +51,28 @@ typedef struct s_data
 	t_philo			*philos;
 }				t_data;
 
+// Utils
 int		ph_strlen(char *str);
 int		ph_atoi(const char *str);
 void	destroy_mutex(char *str, t_data *data, pthread_mutex_t *forks);
-void	init_program(t_data *data, t_philo *philos);
+int		ph_usleep(size_t milliseconds);
+size_t	get_current_time(void);
+
+// Program initialization
+void	init_data(t_data *data, t_philo *philos);
+void	init_forks(pthread_mutex_t *forks , int philo_num);
+void	init_phs(t_philo *phs, t_data *data, pthread_mutex_t *forks, char **av);
+
+// Thread functions
+int		thread_create(t_data * data, pthread_mutex_t *forks);
+int		dead_loop(t_philo *philo);
+
+// Monitor
+void	*monitor(void *pointer);
+void	print_message(char *str, t_philo *philo, int id);
+
+void	think(t_philo *philo);
+void	dream(t_philo *philo);
+void	eat(t_philo *philo);
 
 #endif
