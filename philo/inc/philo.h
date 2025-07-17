@@ -6,7 +6,7 @@
 /*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 16:04:37 by gmunoz            #+#    #+#             */
-/*   Updated: 2025/06/07 19:51:24 by gmunoz           ###   ########.fr       */
+/*   Updated: 2025/07/17 20:55:06 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_data
 	int				dead_flag;
 	pthread_mutex_t	write_lock;
 	pthread_mutex_t	dead_lock;
-	pthread_mutex_t meal_lock;
+	pthread_mutex_t	meal_lock;
 	t_philo			*philos;
 }				t_data;
 
@@ -60,11 +60,11 @@ size_t	get_current_time(void);
 
 // Program initialization
 void	init_data(t_data *data, t_philo *philos);
-void	init_forks(pthread_mutex_t *forks , int philo_num);
+void	init_forks(pthread_mutex_t *forks, int philo_num);
 void	init_phs(t_philo *phs, t_data *data, pthread_mutex_t *forks, char **av);
 
 // Thread functions
-int		thread_create(t_data * data, pthread_mutex_t *forks);
+int		thread_create(t_data *data, pthread_mutex_t *forks);
 int		dead_loop(t_philo *philo);
 
 // Monitor

@@ -6,7 +6,7 @@
 /*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:04:53 by gmunoz            #+#    #+#             */
-/*   Updated: 2025/06/07 19:52:32 by gmunoz           ###   ########.fr       */
+/*   Updated: 2025/07/17 20:54:57 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ void	*philo_cycle(void *pointer)
 	return (pointer);
 }
 
-int	thread_create(t_data * data, pthread_mutex_t *forks)
+int	thread_create(t_data *data, pthread_mutex_t *forks)
 {
 	pthread_t	observer;
 	int			i;
-	
+
 	if (pthread_create(&observer, NULL, &monitor, data->philos) != 0)
 		destroy_mutex("Thread creation error", data, forks);
 	i = 0;
 	while (i < data->philos[0].num_of_philos)
 	{
 		if (pthread_create(&data->philos[i].thread, NULL, &philo_cycle,
-			&data->philos[i]) != 0)
+				&data->philos[i]) != 0)
 			destroy_mutex("Thread creation error", data, forks);
 		i++;
 	}

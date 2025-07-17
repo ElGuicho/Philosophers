@@ -6,7 +6,7 @@
 /*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/07 18:15:27 by gmunoz            #+#    #+#             */
-/*   Updated: 2025/06/07 19:53:22 by gmunoz           ###   ########.fr       */
+/*   Updated: 2025/07/17 20:49:34 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	philo_death(t_philo *ph, size_t time_to_die)
 int	check_if_dead(t_philo *philos)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < philos[0].num_of_philos)
 	{
@@ -45,7 +45,7 @@ int	check_if_dead(t_philo *philos)
 			pthread_mutex_lock(philos[0].dead_lock);
 			*philos->dead = 1;
 			pthread_mutex_unlock(philos[0].dead_lock);
-			return (1);			
+			return (1);
 		}
 		i++;
 	}

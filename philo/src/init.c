@@ -6,7 +6,7 @@
 /*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 22:47:04 by gmunoz            #+#    #+#             */
-/*   Updated: 2025/06/07 19:51:55 by gmunoz           ###   ########.fr       */
+/*   Updated: 2025/07/17 20:51:48 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	init_data(t_data *data, t_philo *philos)
 	pthread_mutex_init(&data->meal_lock, NULL);
 }
 
-void	init_forks(pthread_mutex_t *forks , int philo_num)
+void	init_forks(pthread_mutex_t *forks, int philo_num)
 {
 	int	i;
 

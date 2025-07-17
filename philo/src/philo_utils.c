@@ -6,7 +6,7 @@
 /*   By: gmunoz <gmunoz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 12:26:30 by guido             #+#    #+#             */
-/*   Updated: 2025/06/07 18:03:37 by gmunoz           ###   ########.fr       */
+/*   Updated: 2025/07/17 20:50:33 by gmunoz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ph_atoi(const char *str)
 void	destroy_mutex(char *str, t_data *data, pthread_mutex_t *forks)
 {
 	int	i;
-	
+
 	i = 0;
 	if (str)
 	{
@@ -58,8 +58,8 @@ void	destroy_mutex(char *str, t_data *data, pthread_mutex_t *forks)
 		write(2, "\n", 1);
 	}
 	pthread_mutex_destroy(&data->write_lock);
-	pthread_mutex_destroy(&data->write_lock);
-	pthread_mutex_destroy(&data->write_lock);
+	pthread_mutex_destroy(&data->meal_lock);
+	pthread_mutex_destroy(&data->dead_lock);
 	while (i < data->philos[0].num_of_philos)
 	{
 		pthread_mutex_destroy(&forks[i]);
@@ -80,7 +80,7 @@ int	ph_usleep(size_t milliseconds)
 size_t	get_current_time(void)
 {
 	struct timeval	time;
-	
+
 	if (gettimeofday(&time, NULL) == -1)
 		write(2, "gettimeofday() error\n", 22);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
